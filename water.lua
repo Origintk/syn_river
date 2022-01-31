@@ -71,7 +71,7 @@ end)
 
 function prompts()
     Citizen.CreateThread(function()
-    local str = "Waschen"
+    local str = "Wash"
     washbutton = PromptRegisterBegin()
     PromptSetControlAction(washbutton, 0x760A9C6F)
     str = CreateVarString(10, 'LITERAL_STRING', str)
@@ -85,7 +85,7 @@ function prompts()
     end)
 
     Citizen.CreateThread(function()
-    local str = "Trinken"
+    local str = "Drink"
     drinkbutton = PromptRegisterBegin()
     PromptSetControlAction(drinkbutton, 0xC7B5340A)
     str = CreateVarString(10, 'LITERAL_STRING', str)
