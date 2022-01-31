@@ -47,7 +47,7 @@ Citizen.CreateThread(function()
                     if IsEntityInWater(PlayerPedId()) then
                       sun = 4     
                         if active == false then
-                            local label = CreateVarString(10, 'LITERAL_STRING', "Gewässer")
+                            local label = CreateVarString(10, 'LITERAL_STRING', "Water")
                             PromptSetActiveGroupThisFrame(buttons_prompt, label)
                         end
                         if Citizen.InvokeNative(0xC92AC953F0A982AE,washbutton) then
