@@ -37,7 +37,7 @@ local WaterTypes = {
 Citizen.CreateThread(function()
    prompts()
     while true do
-        Citizen.Wait(1)
+       local sun = 500
         local coords = GetEntityCoords(PlayerPedId())
         local Water = Citizen.InvokeNative(0x5BA7A68A346A5A91,coords.x+3, coords.y+3, coords.z)
         local playerPed = PlayerPedId()
@@ -45,6 +45,7 @@ Citizen.CreateThread(function()
             if Water == WaterTypes[k]["waterhash"]  then
                if IsPedOnFoot(PlayerPedId()) then
                     if IsEntityInWater(PlayerPedId()) then
+                      sun = 4     
                         if active == false then
                             local label = CreateVarString(10, 'LITERAL_STRING', "Gewässer")
                             PromptSetActiveGroupThisFrame(buttons_prompt, label)
@@ -55,16 +56,17 @@ Citizen.CreateThread(function()
                         if Citizen.InvokeNative(0xC92AC953F0A982AE,drinkbutton) then
                         TriggerEvent("drp:rio")
                         Citizen.Wait(17000)
-                        TriggerEvent("fred_meta:consume", 0, 50, 0, 0, 0.0, 0.0, 0, 0.0, 0.0)
+                       TriggerEvent("vorpmetabolism:changeValue", "Thirst", 75)
                         PlaySoundFrontend("Core_Fill_Up", "Consumption_Sounds", true, 0)
 
                     end
                 end
                 
             end
-     end
-    end
-end
+          end
+      end
+   Citizen.Wait(sun)          
+   end
 end)
 
 function prompts()
